@@ -204,9 +204,11 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    
         return CGFloat(Config.tableStyle.tableRowHeight)
-        
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+      SwiftMultiSelect.delegate?.willDisplayCell(idxPath: indexPath)
     }
     
     // MARK: - UISearchBarDelegate
