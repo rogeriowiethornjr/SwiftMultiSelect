@@ -71,6 +71,12 @@ public class SwiftMultiSelect{
         
     }
     
+    public class func Reload(vc: UIViewController) {
+      if let vc = vc.navigationController!.visibleViewController as? MultiSelecetionViewController {
+        vc.tableView.reloadData()
+      }
+    }
+    
     private class func getContacts(){
         //ATTENTION: You have to provide a info.plist string for access contacts
         //<key>NSContactsUsageDescription</key>
