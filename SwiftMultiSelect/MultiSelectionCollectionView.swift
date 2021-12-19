@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Contacts
+//import Contacts
 
 extension MultiSelecetionViewController:UICollectionViewDelegate,UICollectionViewDataSource{
     
