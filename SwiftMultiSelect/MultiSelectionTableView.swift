@@ -50,7 +50,7 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
         
         if SwiftMultiSelect.dataSourceType == .phone{
             item = (searchString == "") ?  SwiftMultiSelect.items![indexPath.row] : SwiftMultiSelect.items!.filter({$0.title.lowercased().contains(searchString.lowercased()) || ($0.description != nil && $0.description!.lowercased().contains(searchString.lowercased())) })[indexPath.row]
-        }else{
+        } else {
             //Try to get item from delegate
             item = SwiftMultiSelect.dataSource?.swiftMultiSelect(itemAtRow: indexPath.row)
         }
@@ -160,7 +160,7 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
 
         if SwiftMultiSelect.dataSourceType == .phone{
             item = (searchString == "") ?  SwiftMultiSelect.items![indexPath.row] : SwiftMultiSelect.items!.filter({$0.title.lowercased().contains(searchString.lowercased()) || ($0.description != nil && $0.description!.lowercased().contains(searchString.lowercased())) })[indexPath.row]
-        }else{
+        } else {
             //Try to get item from delegate
             item = SwiftMultiSelect.dataSource?.swiftMultiSelect(itemAtRow: indexPath.row)
         }
@@ -194,12 +194,12 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
       }
 
         //Reset search
-        if searchString != ""{
-            searchBar.text = ""
-            searchString = ""
-            SwiftMultiSelect.delegate?.userDidSearch(searchString: "")
-            self.tableView.reloadData()
-        }
+//         if searchString != ""{
+//             searchBar.text = ""
+//             searchString = ""
+//             SwiftMultiSelect.delegate?.userDidSearch(searchString: "")
+//             self.tableView.reloadData()
+//         }
 
     }
     
@@ -221,13 +221,22 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
             self.searchString = ""
         }
         
-        SwiftMultiSelect.delegate?.userDidSearch(searchString: searchText)
+       // SwiftMultiSelect.delegate?.userDidSearch(searchString: searchText)
         
-        self.tableView.reloadData()
+       // self.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+      if searchBar.text!.count > 0 { SwiftMultiSelect.delegate?.userDidSearch(searchString: searchBar.text!) }
+    }
+  
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+      SwiftMultiSelect.delegate?.userDidSearchCancelButton()
     }
     
     @objc func hideKeyboardWithSearchBar(_ searchBar:UISearchBar){
         searchBar.resignFirstResponder()
+        SwiftMultiSelect.delegate?.userDidSearchCancelButton()
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool{
