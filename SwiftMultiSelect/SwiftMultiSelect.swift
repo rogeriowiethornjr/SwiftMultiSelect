@@ -310,6 +310,8 @@ public protocol SwiftMultiSelectDelegate{
     /// Tell to delegate user has closed without select
     func userDidSearch(searchString:String)
     
+    func userDidSearchCancelButton()
+    
     func willDisplayCell(idxPath: IndexPath)
     
 }
