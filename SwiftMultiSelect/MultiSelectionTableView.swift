@@ -167,7 +167,7 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
         
         //Save item data 
         item.color = cell.initials.backgroundColor!
-
+        self.tableView.tintColor = .white
         //Check if cell is already selected or not
       if cell.accessoryType == UITableViewCell.AccessoryType.checkmark {
             //Set accessory type
