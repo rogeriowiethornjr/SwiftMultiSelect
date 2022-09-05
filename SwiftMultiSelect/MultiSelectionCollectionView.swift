@@ -151,7 +151,7 @@ extension MultiSelecetionViewController:UICollectionViewDelegate,UICollectionVie
                 removeItemAndReload(index: id!)
             }
 
-            SwiftMultiSelect.delegate?.swiftMultiSelect(didUnselectItem: item!)
+            //SwiftMultiSelect.delegate?.swiftMultiSelect(didUnselectItem: item!)
             
             //Reload cell state
             reloadCellState(row: idp, selected: false)
